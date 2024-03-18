@@ -10,6 +10,10 @@ board = [[' ' for _ in range(3)] for _ in range(3)]
 
 
 def print_board():
+    """ Prints playing board to the console 
+    
+    for each list in the board list prints the contents to a line            
+    """
     for row in board:
      
         print('|'.join(row))
@@ -17,7 +21,14 @@ def print_board():
 
 
 def is_win(player):
-    '''Check rows, columns, and diagonals for win condition for a given player'''
+    '''Check rows, columns, and diagonals for win condition for a given player    
+    Args:
+        player: is either X or O
+    Returns:
+        boolean
+    Raises:
+         
+    '''
     for i in range(3):
         if not all([cell == player for cell in board[i]]):  # Rows
             return False 
@@ -29,12 +40,24 @@ def is_win(player):
 
 
 def tally_wins(results):
-    # Leveraging the fact that in Python: True = 1 and False = 0 
-    # we can use sum() to count the number of wins by counting all Trues and Falses
+    """ Leveraging the fact that in Python: True = 1 and False = 0 
+    we can use sum() to count the number of wins by counting all Trues and Falses
+    Args:
+        results: of wins and draws. doesn't distinguished between X and O
+    Return:
+        integer
+    """    
     return sum(results)
 
 
 def main():
+    """ A script to make calls defs in sequence to make the tic_tac_toe game runs
+    Args:
+        current_player: can either be X or O
+        moves: an integer tracks amount of turns taken per game. If moves equals 9 breaks game loop.
+        results: list of booleans that represent wins (True) and draws (false)
+
+    """
     current_player = 'X'
     moves = 0
     results = []
